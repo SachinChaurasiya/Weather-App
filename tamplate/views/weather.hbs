@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {{>headerlinks}}
+</head>
+
+<body>
+    <!---Nav Bar-->
+    {{>navbar}}
+
+    <!--Main Contant-->
+    <div class="container-fluid main_header">
+        <div class="row">
+            <div class="col-md-12 col-12 mx-auto">
+                <div class="main_content">
+                    <form class="temp_form">
+                        <input type="text" id="cityName" placeholder="Enter Your City Name" autocomplete="off" spellcheck="false"
+                            data-ms-editor="true"/>
+                        <input type="submit" value="Search" id="submitBtn"/>
+                    </form>
+                </div>
+
+                <div class="tempInformation">
+                    <div class="top_layer">
+                        <p id="day">Friday</p>
+                        <p id="Today_Data">01-jan-2021</p>
+                    </div>
+                    <div class="main_layer">
+                        <p id="city_name">Get Output Here</p>
+                        <div class="middle_layer data_hide">
+                            <p id="temp"><span>0</span> <sup>o</sup>C</p>
+                            <p id="Status">Weather</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!---Footer--->
+    {{>footer}}
+
+    <script src="js/main.js"></script>
+    <script>
+        const getCurrentDay = () => {
+            let weekday = new Array(7);
+              weekday[0] = "Sunday";
+              weekday[1] = "Monday";
+              weekday[2] = "Tuesday";
+              weekday[3] = "Wednesday";
+              weekday[4] = "Thusday";
+              weekday[5] = "Friday";
+              weekday[6] = "Saturday";
+
+              let CurrentTime = new Date();
+              days = weekday[CurrentTime.getDay()];
+              const day = document.getElementById("day");
+               day.innerHTML = days;
+              
+        }
+        getCurrentDay();
+        
+    </script>
+    <script type="text/javascript">
+    
+    const getCurrentTime = () => {
+            var months = [
+                "Jan",
+                "Feb",
+                "Mar",
+                "Apr",
+                "May",
+                "June",
+                "July",
+                "Aug",
+                "Sept",
+                "Oct",
+                "Nov",
+                "Dec",
+            ];
+
+            var now = new Date();
+            var month = months[now.getMonth()];
+            var date = now.getDate();
+
+            let hours = now.getHours();
+            let mins = now.getMinutes();
+
+            let periods = "AM";
+
+            if (hours > 11) {
+                periods = "PM";
+                if (hours > 12) hours -= 12;
+            }
+            if (mins < 10) {
+                mins = "0" + mins;
+            }
+           const Today_Datas = document.getElementById("Today_Data");
+           const time = `${month} ${date} | ${hours}:${mins}${periods}`;
+           Today_Data.innerHTML = time;
+        };
+        getCurrentTime();
+    </script>
+
+    <!---js, jquary, All-->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+        integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
